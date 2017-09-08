@@ -273,7 +273,20 @@ will write the _.html_ file for you. Example:
 ```js
 {
   test: /\.html$/,
-  use: [ 'file-loader?name=[path][name].[ext]!extract-loader!html-loader' ]
+  use: [
+    {
+          loader: "file-loader",
+          options: {
+              name: "[path][name].[ext]",
+          },
+      },
+      {
+          loader: "extract-loader",
+      },
+      {
+          loader: "html-loader"
+      }
+  ]
 }
 ```
 
